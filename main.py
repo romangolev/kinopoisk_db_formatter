@@ -7,8 +7,19 @@ kinopoisk.ru wached movies exporter
 
 from bs4 import BeautifulSoup
 import json, csv
+import os 
+from os import listdir
+from os.path import isfile, join
 
-pages = ["files/page1.html","files/page2.html","files/page3.html","files/page4.html"]
+
+mypath = join(os.getcwd(),'files')
+onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+
+
+pages = ['files/' + i for i in onlyfiles if '.html' in i]
+print(pages)
+
+# pages = ["files/1.html","files/2.html","files/3.html","files/4.html","files/5.html","files/6.html","files/7.html"]
 
 movies_list = []
 for page in pages:
